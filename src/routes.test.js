@@ -27,4 +27,16 @@ describe('Rotas', () => {
     const meusCartoes = screen.getByText('Meus cartões'); //criando consulta do título do componente
     expect(meusCartoes).toHaveTextContent('Meus cartões'); //espero que tenha o título na página
   });
+
+  test('Deve renderizar a localização da rota atual', () => {
+    const rota = '/cartoes';
+    render(
+      <MemoryRouter initialEntries={[rota]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    const localizacaoAtual = screen.getByTestId('local'); //criando consulta pelo data-testid
+    expect(localizacaoAtual).toHaveTextContent(rota);
+  });
 });
